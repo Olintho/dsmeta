@@ -14,6 +14,7 @@ function App() {
           </div>
         </section>
       </main>
+      <footer>OREI Info Systems</footer>
     </>
 
   )
