@@ -34,12 +34,12 @@ public class SmsService {
 		Sale sale = saleRepository.findById(saleId).get();
 		String date = sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
 		
-		String msgSms = "O vendedor " + sale.getSellerName() 
-						+ ", no período de " + date + " vendeu um total de R$ " 
-						+ String.format("%.2f", sale.getAmount()) + ".";   
+//		String msgSms = "O vendedor " + sale.getSellerName() 
+//						+ ", no período de " + date + " vendeu um total de R$ " 
+//						+ String.format("%.2f", sale.getAmount()) + ".";   
 //		
-//		 String msg = "O vendedor " + sale.getSellerName() + " foi destaque em " + date
-//			    + " com um total de R$ " + String.format("%.0f", sale.getAmount());
+		 String msg = "O vendedor " + sale.getSellerName() + " foi destaque em " + date
+			    + " com um total de R$ " + String.format("%.0f", sale.getAmount());
 //		
 //		String msgSms = "O vendedor " + sale.getSellerName() + " foi destaque em " + date
 //			    + " com um total de R$ " + new DecimalFormat("#,##0.00").format(sale.getAmount());
@@ -51,9 +51,9 @@ public class SmsService {
 		PhoneNumber to = new PhoneNumber(twilioPhoneTo);
 		PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
 
-		Message message = Message.creator(to, from, msgSms).create();
+		Message message = Message.creator(to, from, msg).create();
 
 		System.out.println(message.getSid());
-		System.out.println(msgSms);
+		System.out.println(msg);
 	}
 }
